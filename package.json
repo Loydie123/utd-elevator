@@ -11,7 +11,9 @@
     "test": "mocha tests/elevator_test.cjs",
     "test:level7": "mocha tests/level7_optimization_test.cjs",
     "test:all": "mocha tests/*.cjs",
-    "server": "cd web-app-version && nodemon server/index.js"
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
+    "server": "node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,10 @@
     "url": "https://github.com/Alex-Tideman/elevator_challenge/issues"
   },
   "homepage": "https://github.com/Alex-Tideman/elevator_challenge",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
   "devDependencies": {
     "@babel/core": "^7.23.0",
     "@babel/preset-env": "^7.23.0",

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevator Simulator - Level 8</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🏢 Elevator Simulator</h1>
+      <p>Levels 8 & 9 - DOM Visualization with API Backend</p>
+    </header>
+
+    <div class="main-content">
+      <div class="building-section">
+        <h2>Building</h2>
+        <div class="building" id="building">
+        </div>
+        <div class="stats">
+          <div class="stat-item">
+            <span class="stat-label">Current Floor:</span>
+            <span class="stat-value" id="currentFloor">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Floors Traversed:</span>
+            <span class="stat-value" id="floorsTraversed">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Total Stops:</span>
+            <span class="stat-value" id="totalStops">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Riders:</span>
+            <span class="stat-value" id="ridersCount">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="control-section">
+        <h2>Control Panel</h2>
+        
+        <div class="form-group">
+          <label for="personName">Person Name:</label>
+          <input type="text" id="personName" placeholder="Enter name">
+        </div>
+
+        <div class="form-group">
+          <label for="currentFloor">Current Floor:</label>
+          <input type="number" id="currentFloorInput" min="0" max="10" value="0">
+        </div>
+
+        <div class="form-group">
+          <label for="dropOffFloor">Drop-off Floor:</label>
+          <input type="number" id="dropOffFloor" min="0" max="10" value="5">
+        </div>
+
+        <button class="btn btn-primary" onclick="addRequest()">
+          Add Request
+        </button>
+
+        <button class="btn btn-success" onclick="startElevator()">
+          Start Elevator
+        </button>
+
+        <button class="btn btn-secondary" onclick="resetElevator()">
+          Reset
+        </button>
+
+        <div class="requests-list">
+          <h3>Pending Requests</h3>
+          <ul id="requestsList"></ul>
+        </div>
+
+        <div class="riders-list">
+          <h3>Current Riders</h3>
+          <ul id="ridersList"></ul>
+        </div>
+
+        <div class="api-status">
+          <h3>API Status</h3>
+          <div class="status-indicator">
+            <span class="status-dot" id="apiStatus"></span>
+            <span id="apiStatusText">Checking...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
