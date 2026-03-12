@@ -9,6 +9,8 @@
   },
   "scripts": {
     "test": "mocha tests/elevator_test.cjs",
+    "test:level7": "mocha tests/level7_optimization_test.cjs",
+    "test:all": "mocha tests/*.cjs",
     "server": "cd web-app-version && nodemon server/index.js"
   },
   "repository": {

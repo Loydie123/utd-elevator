@@ -18,7 +18,6 @@ describe('Elevator', function() {
     elevator.requests.push(mockUser)
     elevator.goToFloor(mockUser);
 
-    //check if the elevator automatically  returns to the loby and set the end values
     const endFloor = elevator.checkReturnToLoby() ? 0 : 5
     const floorsTraversed = elevator.checkReturnToLoby() ? 10 : 5
 
@@ -93,7 +92,6 @@ describe('Elevator', function() {
   })
 
   it('should cater to the riders in order (first come, first serve)', () => {
-    //both person A and B are going up
     let personA = new Person('Oliver',3,6)
     let personB = new Person('Angela',1,5)    
     elevator.requests = [personA, personB]
@@ -108,7 +106,6 @@ describe('Elevator', function() {
 
     elevator.reset()
 
-    //person A goes up and B goes down
     personA = new Person('Beverly',3,6)
     personB = new Person('James',5,1)
     elevator.requests = [personA, personB]
@@ -123,7 +120,6 @@ describe('Elevator', function() {
 
     elevator.reset()
 
-    //person A goes down and B goes up
     personA = new Person('Jeanne',7,1)
     personB = new Person('Karl',2,8)
     elevator.requests = [personA, personB]
@@ -138,7 +134,6 @@ describe('Elevator', function() {
     
     elevator.reset()
     
-    //both Person A and B go down
     personA = new Person('Max',8,2)
     personB = new Person('Charlie',5,0)
     elevator.requests = [personA, personB]
