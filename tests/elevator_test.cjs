@@ -1,5 +1,5 @@
-require('babel-core/register')({
-  ignore: /node_modules\/(?!ProjectB)/
+require('@babel/register')({
+  ignore: [/node_modules/]
 });
 
 const assert = require('chai').assert;

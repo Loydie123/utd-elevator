@@ -16,7 +16,29 @@ export default class Elevator {
   }
 
   goToFloor(person){  
-    // add your code here
+    while(this.currentFloor !== person.currentFloor){
+      if(this.currentFloor < person.currentFloor){
+        this.moveUp()
+      } else {
+        this.moveDown()
+      }
+    }
+    
+    this.hasPickup()
+    
+    while(this.currentFloor !== person.dropOffFloor){
+      if(this.currentFloor < person.dropOffFloor){
+        this.moveUp()
+      } else {
+        this.moveDown()
+      }
+    }
+    
+    this.hasDropoff()
+    
+    if(this.checkReturnToLoby()){
+      this.returnToLoby()
+    }
   }
 
   moveUp(){
@@ -38,19 +60,35 @@ export default class Elevator {
   }
 
   hasStop(){
-    // add your code here
+    const hasPickupAtFloor = this.requests.some(request => request.currentFloor === this.currentFloor)
+    const hasDropoffAtFloor = this.riders.some(rider => rider.dropOffFloor === this.currentFloor)
+    return hasPickupAtFloor || hasDropoffAtFloor
   }
 
   hasPickup(){
-    // add your code here
+    const pickupIndex = this.requests.findIndex(request => request.currentFloor === this.currentFloor)
+    if(pickupIndex !== -1){
+      const person = this.requests.splice(pickupIndex, 1)[0]
+      this.riders.push(person)
+    }
   }
 
   hasDropoff(){
-    // add your code here
+    const dropoffIndex = this.riders.findIndex(rider => rider.dropOffFloor === this.currentFloor)
+    if(dropoffIndex !== -1){
+      this.riders.splice(dropoffIndex, 1)
+    }
   }
 
   checkReturnToLoby(){
-    // add your code here
+    const currentHour = new Date().getHours()
+    const noRiders = this.riders.length === 0
+    const isBeforeNoon = currentHour < 12
+    
+    if(noRiders && isBeforeNoon){
+      return true
+    }
+    return false
   }
 
   returnToLoby(){
